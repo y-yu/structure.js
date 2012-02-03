@@ -194,8 +194,15 @@
     // append slide to parent section
 
     var appendSlide = function ( section, position, depth ) {
-        var step = document.createElement("div");
-        step.className = "step";
+        var step    = document.createElement("div");
+
+		step.className = "step";
+		arrayify(section.classList).map(function ( c ) {
+			step.classList.add(c);
+			return c;
+		}).forEach(function ( c ) {
+			section.classList.remove(c);
+		});
 
         arrayify(section.childNodes).filter(function ( c ) {
             return c.nodeType == 1 && c.tagName != "SECTION";
