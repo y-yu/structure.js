@@ -32,3 +32,8 @@ http://yoshimurayuu.github.com/structure.js/
 # BROWSER SUPPORT
 
 It works on Chrome and Firefox 10.
+
+# LICENSE
+
+Copyright 2011-2012 Bartek Szopka. Released under MIT License.
+
