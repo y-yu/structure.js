@@ -4,6 +4,10 @@ structure.js --Automatic layout based on content structure--
 
 It is inspired by bartaz [impress.js](https://github.com/bartaz/impress.js).
 
+# VERSION
+
+This is version O.2
+
 # DESCRIPTION
 
 ```HTML
