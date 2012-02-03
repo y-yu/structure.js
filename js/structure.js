@@ -163,9 +163,9 @@
 
     // set transform data
 
-    var setTransform = function ( s, position, depth ) {
-        var data = s.dataset,
-            step = { 
+    var setTransform = function ( step, position, depth ) {
+        var data      = step.parentNode.dataset,
+            transform = { 
                 translate: {
                     x: data.x || position.x * 2000,
                     y: data.y || position.y * 2000,
@@ -179,14 +179,14 @@
                 scale: data.scale || depth
             };
         
-        s.stepData = step;
+        step.stepData = transform;
 
-        css(s, {
+        css(step, {
             position: "absolute",
             transform: "translate(-50%, -50%)" +
-            translate(step.translate) +
-            rotate(step.rotate) + 
-            scale(step.scale),
+            translate(transform.translate) +
+            rotate(transform.rotate) + 
+            scale(transform.scale),
             transformStyle: "preserve-3d"
         });
     };
@@ -210,9 +210,9 @@
             step.appendChild(section.removeChild(c));
         });
 
-        setTransform(step, position, depth);
-
         section.insertBefore(step, section.firstChild);
+
+        setTransform(step, position, depth);
     };
 
     var priviousDepth = Infinity,
