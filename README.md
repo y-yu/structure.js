@@ -6,7 +6,7 @@ It is inspired by bartaz [impress.js](https://github.com/bartaz/impress.js).
 
 # VERSION
 
-This is version O.2
+This is version 0.2
 
 # DESCRIPTION
 
