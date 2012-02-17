@@ -104,8 +104,8 @@ body     { pointer-events: none; }
 /* COMMON STEP STYLES */
 
 .step {
-    width: 900px;
-    padding: 400px;
+    width: 1000px;
+    padding: 40px;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing:    border-box;
@@ -202,8 +202,8 @@ body     { pointer-events: none; }
     transform:         translateZ(20px);
 }
 
-#title h1 {
-    font-size: 190px;
+.step > h1 {
+    font-size: 150px;
     
     -webkit-transform: translateZ(50px);
     -moz-transform:    translateZ(50px);

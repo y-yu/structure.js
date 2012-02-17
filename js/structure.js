@@ -346,32 +346,14 @@
 		};
 		
 		// EVENTS
-		
-		document.addEventListener("keydown", function keyControl ( event ) {
-			switch( event.keyCode ) {
-				case 33: ; // pg up
-				case 37: ; // left
-				case 38:   // up
-					selectPrev();
-					break;
-				case 9:  ; // tab
-				case 32: ; // space
-				case 34: ; // pg down
-				case 39: ; // right
-				case 40:   // down
-					selectNext();
-					break;
-				case 27:
-					document.removeEventListener("keydown", keyControl);
-					break;
-			}
-			
-		}, false);
-
-		document.addEventListener("click", function ( event ) {
+				
+		var clickAction = function ( event ) {
 			// event delegation with "bubbling"
 			// check if event target (or any of its parents is a link or a step)
 			var target = event.target;
+
+			console.log(target);
+
 			while ( (target.tagName != "A") &&
 					(!target.stepData) &&
 					(target != document.body) ) {
@@ -390,8 +372,33 @@
 			if ( select(target) ) {
 				event.preventDefault();
 			}
+		};
+
+		//document.addEventListener("click", clickAction, false);
+
+		document.addEventListener("keydown", function keyControl ( event ) {
+			switch( event.keyCode ) {
+				case 33: ; // pg up
+				case 37: ; // left
+				case 38:   // up
+					selectPrev();
+					break;
+				case 9:  ; // tab
+				case 32: ; // space
+				case 34: ; // pg down
+				case 39: ; // right
+				case 40:   // down
+					selectNext();
+					break;
+				case 27:
+					document.removeEventListener("keydown", keyControl);
+					//document.removeEventListener("click", clickAction);
+					break;
+			}
+			
 		}, false);
-		
+
+				
 		var getElementFromUrl = function () {
 			// get id from url # by removing `#` or `#/` from the beginning,
 			// so both "fallback" `#slide-id` and "enhanced" `#/slide-id` will work
@@ -416,8 +423,8 @@
 			$$(".step", document).forEach(function ( slide ) {
 				arrayify(slide.childNodes).map(function ( c ) {
 					return slide.removeChild(c);
-				}).forEach(function ( c, idx ) {
-					slide.parentNode.insertBefore(c, (c.previousSibling || slide.parentNode.firstChild));
+				}).reverse().forEach(function ( c, idx ) {
+					slide.parentNode.insertBefore(c, (c.priviousSibling || slide.parentNode.firstChild));
 				});
 
 				slide.parentNode.removeChild(slide);
